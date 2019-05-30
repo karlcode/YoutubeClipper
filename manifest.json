@@ -1,0 +1,13 @@
+{
+    "name": "Youtube Clipper",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "Clip the best things from youtube",
+
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": ["content.js"],
+        "run_at": "document_start"
+    }],
+    "permissions": ["tabs"]
+}
