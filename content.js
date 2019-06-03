@@ -1,16 +1,4 @@
- if (window.location.origin === "https://www.youtube.com" || window.location.origin === "http://www.youtube.com") {
-     var yolo = document.getElementsByClassName("video-stream");
-     console.log(yolo)
-     var node = document.createElement("li"); // Create a <li> node
-     var textnode = document.createTextNode("Water");
-     const player = document.getElementById('player');  //this gets rerendered and destroyed for some reason
-     node.appendChild(textnode);
-     node.style.height = 3000;
-     node.style.width = 3000;
-     node.style.backgroundColor = "#BA4747"
-     player.appendChild(node);
 
- }
 
  document.documentElement.style.height = '100%';
  document.body.style.height = '100%';
@@ -22,25 +10,43 @@
  var btn = document.createElement('input');
 
  //append all elements
- document.body.appendChild(div);
- div.appendChild(btnForm);
- btnForm.appendChild(btn);
- //set attributes for div
- div.id = 'myDivId';
- div.style.position = 'fixed';
- div.style.top = '50%';
- div.style.left = '50%';
- div.style.width = '100%';
- div.style.height = '100%';
- div.style.backgroundColor = 'red';
+var app = document.getElementsByTagName('ytd-app')[0]
+console.log(app.getElementsByClassName('style-scope ytd-app')[11]) //find its content child
+ if (document.readyState === 'complete') {
+var info = document.getElementById('columns')
 
- //set attributes for btnForm
- btnForm.action = '';
+info.appendChild(div);
+div.appendChild(btnForm);
+btnForm.appendChild(btn);
+//set attributes for div
+div.id = 'myDivId';
+div.style.position = 'fixed';
+div.style.top = '50%';
+div.style.left = '50%';
+div.style.width = '100%';
+div.style.height = '100%';
+div.style.backgroundColor = 'aqua';
+div.style.zIndex = '999999'
 
- //set attributes for btn
- //"btn.removeAttribute( 'style' );
- btn.type = 'button';
- btn.value = 'hello';
- btn.style.position = 'absolute';
- btn.style.top = '50%';
- btn.style.left = '50%';
+//set attributes for btnForm
+btnForm.action = '';
+
+//set attributes for btn
+//"btn.removeAttribute( 'style' );
+btn.type = 'button';
+btn.value = 'hello';
+btn.style.position = 'absolute';
+btn.style.top = '50%';
+btn.style.left = '50%';
+
+ }
+
+ if (document.readyState === 'loading') {
+     document.addEventListener('DOMContentLoaded', afterDOMLoaded);
+ } else {
+     afterDOMLoaded();
+ }
+
+ function afterDOMLoaded() {
+    console.log(app.getElementsByClassName('style-scope ytd-app')[11]) //find its content child
+ }
